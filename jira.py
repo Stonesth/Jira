@@ -99,8 +99,8 @@ def recoverJiraInformation() :
 
     # Epic Link
     global epic_link
-    tools.waitLoadingPageByXPATH("/html/body/div[1]/section/div[2]/div/div/div/div/div[2]/div/div/div/div[1]/div[1]/div[2]/div/div/div/ul/li[3]/div/div/a")
-    epic_link = tools.driver.find_element_by_xpath("/html/body/div[1]/section/div[2]/div/div/div/div/div[2]/div/div/div/div[1]/div[1]/div[2]/div/div/div/ul/li[3]/div/div/a").text
+    tools.waitLoadingPageByXPATH('//*[@id="customfield_10008-val"]/a')
+    epic_link = tools.driver.find_element_by_xpath('//*[@id="customfield_10008-val"]/a').text
     print ("epic_link : " + epic_link)
 
 
@@ -150,9 +150,9 @@ def startJira() :
     workflow = tools.driver.find_element_by_id("opsbar-transitions_more")
     workflow.click()
     
-    # Development IN PROGRESS
-    tools.waitLoadingPageByID("action_id_61")
-    workflow = tools.driver.find_element_by_id("action_id_61")
+    # 
+    tools.waitLoadingPageByID("action_id_51")
+    workflow = tools.driver.find_element_by_id("action_id_51")
     workflow.click()
 
     time.sleep(1)
@@ -204,6 +204,7 @@ def createJira(jiraTitle, description_text, incidentNumber) :
     issuetype_field.click()
     issuetype_field.send_keys("Incident")
     issuetype_field.send_keys(Keys.ENTER)
+    time.sleep(1)
 
     # summary
     tools.waitLoadingPageByID("summary")
@@ -221,32 +222,37 @@ def createJira(jiraTitle, description_text, incidentNumber) :
     assign_to_me_trigger = tools.driver.find_element_by_id("assign-to-me-trigger")
     assign_to_me_trigger.click()
 
-    # Need to go down of the page
-    tools.waitLoadingPageByID("description")
-    description = tools.driver.find_element_by_id("description")
-    description.send_keys(Keys.PAGE_DOWN)
+    # # Need to go down of the page
+    # tools.waitLoadingPageByID("description")
+    # description = tools.driver.find_element_by_id("description")
+    # description.send_keys(Keys.PAGE_DOWN)
 
     # sprint
     tools.waitLoadingPageByID("customfield_10007-field")
     customfield_10007 = tools.driver.find_element_by_id("customfield_10007-field")
     customfield_10007.send_keys(sprint)
+    time.sleep(1)
     customfield_10007.send_keys(Keys.ENTER)
+    time.sleep(1)
 
-    # Need to go Up of the page
-    tools.waitLoadingPageByID("description")
-    description = tools.driver.find_element_by_id("description")
-    description.send_keys(Keys.PAGE_UP)
+    # #Need to go Up of the page
+    # tools.waitLoadingPageByID("description")
+    # description = tools.driver.find_element_by_id("description")
+    # description.send_keys(Keys.PAGE_UP)
 
     # --------------------- Link ----------------------
     tools.waitLoadingPageByXPATH("/html/body/div[8]/div[2]/div[1]/div/form/div[1]/div[2]/div/ul/li[2]/a/strong")
     link_button = tools.driver.find_element_by_xpath("/html/body/div[8]/div[2]/div[1]/div/form/div[1]/div[2]/div/ul/li[2]/a/strong")
     link_button.click()
 
+    time.sleep(1)
+
     # Epic Link
     tools.waitLoadingPageByID("customfield_10008-field")
     customfield_10008 = tools.driver.find_element_by_id("customfield_10008-field")
     customfield_10008.click()
     customfield_10008.send_keys(epic_link)    
+    time.sleep(1)
     customfield_10008.send_keys(Keys.ARROW_DOWN)    
     customfield_10008.send_keys(Keys.ENTER)    
 
@@ -255,7 +261,7 @@ def createJira(jiraTitle, description_text, incidentNumber) :
     labels_textarea = tools.driver.find_element_by_id("labels-textarea")
     labels_textarea.send_keys("IT4IT")
     labels_textarea.send_keys(Keys.ENTER)
-    
+    time.sleep(1)
     # ---------------- References ---------------------
     tools.waitLoadingPageByXPATH("/html/body/div[8]/div[2]/div[1]/div/form/div[1]/div[2]/div/ul/li[3]/a/strong")
     reference_button = tools.driver.find_element_by_xpath("/html/body/div[8]/div[2]/div[1]/div/form/div[1]/div[2]/div/ul/li[3]/a/strong")
