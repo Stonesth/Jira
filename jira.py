@@ -1,5 +1,6 @@
 import os
 import re # regular expression
+import time
 
 from Tools import tools_v000 as tools
 from os.path import dirname
@@ -97,43 +98,57 @@ def recoverJiraInformation() :
     # print("user_name : " + user_name)
 
 def createFolderJira(jira) :
-    os.mkdir(save_path + jira)
+    if os.path.isdir(save_path + jira) :
+        print ("Folder already exist")
+    else :
+        os.mkdir(save_path + jira)
 
 def createFileInto(jira, jiraTitle, description_text) :
     name_of_file = jira + "_Comment_v001"
-    completeName = os.path.join(save_path + jira, name_of_file+".txt")   
-    file1 = open(completeName, "w")
+    completeName = os.path.join(save_path + jira, name_of_file+".txt")
 
-    file1.write("\n")    
-    file1.write("========================================================================================================================"+"\n")
-    file1.write(datetime.now().strftime("%Y-%m-%d %H:%M:%S") + "\n")
-    file1.write("\n")
-    file1.write(jiraTitle.encode('utf-8').strip() + "\n")
-    file1.write("\n")
-    file1.write(description_text + "\n")
-    file1.write("\n")
-    if len(contact_id) == 0 :
+    if os.path.isfile(completeName) :
+        file1 = open(completeName, "a+")
+        file1.write("\n")    
+        file1.write("========================================================================================================================"+"\n")
+        file1.write(datetime.now().strftime("%Y-%m-%d %H:%M:%S") + "\n")
         file1.write("\n")
     else :
-        file1.write("contact_id = " + contact_id + "\n")
-    if len(user_name) == 0 :
-        file1.write("\n")
-    else :
-        file1.write("user_name = " + user_name + "\n")
-    
-    if len(contact_id) > 0 or len(user_name) > 0 :
-        file1.write("ToBeTreated = True" + "\n")
+        file1 = open(completeName, "w")
 
-    file1.close() 
+        file1.write("\n")    
+        file1.write("========================================================================================================================"+"\n")
+        file1.write(datetime.now().strftime("%Y-%m-%d %H:%M:%S") + "\n")
+        file1.write("\n")
+        file1.write(jiraTitle.encode('utf-8').strip() + "\n")
+        file1.write("\n")
+        file1.write(description_text + "\n")
+        file1.write("\n")
+        if len(contact_id) == 0 :
+            file1.write("\n")
+        else :
+            file1.write("contact_id = " + contact_id + "\n")
+        if len(user_name) == 0 :
+            file1.write("\n")
+        else :
+            file1.write("user_name = " + user_name + "\n")
+        
+        if len(contact_id) > 0 or len(user_name) > 0 :
+            file1.write("ToBeTreated = True" + "\n")
+
+        file1.close() 
 
 def startJira() :
     tools.waitLoadingPageByID("opsbar-transitions_more")
     workflow = tools.driver.find_element_by_id("opsbar-transitions_more")
     workflow.click()
     
-    tools.waitLoadingPageByID("action_id_51")
-    workflow = tools.driver.find_element_by_id("action_id_51")
+    # Development IN PROGRESS
+    tools.waitLoadingPageByID("action_id_61")
+    workflow = tools.driver.find_element_by_id("action_id_61")
     workflow.click()
+
+    time.sleep(1)
 
 def selectJira() :
     tools.driver.get("https://jira.atlassian.insim.biz/secure/RapidBoard.jspa?rapidView=464&quickFilter=1705")    
