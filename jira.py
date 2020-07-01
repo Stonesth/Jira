@@ -97,6 +97,13 @@ def recoverJiraInformation() :
             user_name = user_name[0]
     # print("user_name : " + user_name)
 
+    # Epic Link
+    global epic_link
+    tools.waitLoadingPageByXPATH("/html/body/div[1]/section/div[2]/div/div/div/div/div[2]/div/div/div/div[1]/div[1]/div[2]/div/div/div/ul/li[3]/div/div/a")
+    epic_link = tools.driver.find_element_by_xpath("/html/body/div[1]/section/div[2]/div/div/div/div/div[2]/div/div/div/div[1]/div[1]/div[2]/div/div/div/ul/li[3]/div/div/a").text
+    print ("epic_link : " + epic_link)
+
+
 def createFolderJira(jira) :
     if os.path.isdir(save_path + jira) :
         print ("Folder already exist")
