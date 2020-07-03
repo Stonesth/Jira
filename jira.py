@@ -129,7 +129,10 @@ def createFileInto(jira, jiraTitle, description_text) :
         file1.write("\n")
         file1.write(jiraTitle.encode('utf-8').strip() + "\n")
         file1.write("\n")
-        file1.write(description_text + "\n")
+        try :
+            file1.write(description_text + "\n")
+        except UnicodeEncodeError :
+            file1.write("Not possible to place the description for the moment")
         file1.write("\n")
         if len(contact_id) == 0 :
             file1.write("\n")
