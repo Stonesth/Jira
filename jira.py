@@ -161,7 +161,10 @@ def startJira() :
     time.sleep(1)
 
 def selectJira() :
-    tools.driver.get("https://jira.atlassian.insim.biz/secure/RapidBoard.jspa?rapidView=464&quickFilter=1705")    
+    tools.driver.get("https://jira.atlassian.insim.biz/secure/RapidBoard.jspa?rapidView=464&quickFilter=1705")
+
+    # forced the refresh of the page => due to a bug when you create the jira it's not appear directly in the list
+    tools.driver.refresh()      
     
     global jira
     try :
