@@ -37,6 +37,9 @@ epic_link = ""
 def connectToJira(jira) :
     tools.driver.get("https://jira.atlassian.insim.biz/browse/" + jira)
 
+def connectToJiraTST(jira) :
+    tools.driver.get("https://jira-test.atlassian.insim.biz/browse/" + jira)
+
 def recoverJiraInformation() :
     
     # jiraTitle
