@@ -288,3 +288,20 @@ def createJira(jiraTitle, description_text, incidentNumber) :
 
 def connectToJiraBoard() :
     tools.driver.get("https://jira.atlassian.insim.biz/secure/RapidBoard.jspa?rapidView=464")
+
+def commentButton() :
+    tools.waitLoadingPageByID("footer-comment-button")
+    create_issue_submit = tools.driver.find_element_by_id("footer-comment-button")
+    create_issue_submit.click()
+
+def placeTheTextIntoComment(incidentNumber, incidentTitle) :
+    tools.waitLoadingPageByID("comment")
+    comment = tools.driver.find_element_by_id("comment")
+    comment.send_keys(incidentNumber + " - " + incidentTitle + "\n" + "https://nnbe.topdesk.net/tas/secure/incident?action=lookup&lookup=naam&lookupValue=" + incidentNumber + "\n")
+
+def addComment() :
+    tools.waitLoadingPageByID("issue-comment-add-submit")
+    create_issue_submit = tools.driver.find_element_by_id("issue-comment-add-submit")
+    create_issue_submit.click()
+    
+
