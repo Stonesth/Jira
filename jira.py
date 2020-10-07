@@ -302,5 +302,6 @@ def addComment() :
     tools.waitLoadingPageByID("issue-comment-add-submit")
     create_issue_submit = tools.driver.find_element_by_id("issue-comment-add-submit")
     create_issue_submit.click()
-    
+    # add this wait to be sure that the page is loaded correctly before to go to another steps.
+    tools.waitLoadingPageByID("footer-comment-button")
 
