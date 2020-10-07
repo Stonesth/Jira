@@ -113,9 +113,8 @@ def createFolderJira(jira) :
     else :
         os.mkdir(save_path + jira)
 
-def createFileInto(jira, jiraTitle, description_text) :
-    name_of_file = jira + "_Comment_v001"
-    completeName = os.path.join(save_path + jira, name_of_file+".txt")
+def createFileInto(jira, jiraTitle, description_text, path, name_of_file ) :
+    completeName = os.path.join(save_path + path, name_of_file+".txt")
 
     if os.path.isfile(completeName) :
         file1 = open(completeName, "a+")
