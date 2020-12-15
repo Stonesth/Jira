@@ -105,8 +105,8 @@ def recoverJiraInformation() :
 
     # Epic Link
     global epic_link
-    tools.waitLoadingPageByXPATH2(delay_properties, '//*[@id="customfield_10009-val"]/a')
-    epic_link = tools.driver.find_element_by_xpath2(delay_properties, '//*[@id="customfield_10009-val"]/a').text
+    tools.waitLoadingPageByXPATH2(delay_properties, '//*[@id="customfield_10009-val"]')
+    epic_link = tools.driver.find_element_by_xpath('//*[@id="customfield_10009-val"]').text
     print ("epic_link : " + epic_link)
 
 
