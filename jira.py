@@ -1,3 +1,5 @@
+#!/usr/bin/python
+# -*- coding:utf-8 -*-
 import os
 import re # regular expression
 import time
@@ -69,7 +71,7 @@ def recoverJiraInformation() :
     # description_text
     global description_text 
     tools.waitLoadingPageByID("description-val")
-    description_text = tools.driver.find_element_by_id("description-val").text
+    description_text = tools.driver.find_element_by_id("description-val").text.encode('ascii', 'replace')
     try :
         print("description_text : " + description_text )
     except UnicodeEncodeError as ex :
