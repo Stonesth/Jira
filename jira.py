@@ -73,7 +73,7 @@ def recoverJiraInformation() :
     # description_text
     global description_text 
     tools.waitLoadingPageByID("description-val")
-    description_text = tools.driver.find_element_by_id("description-val").text.encode('ascii', 'replace')
+    description_text = tools.driver.find_element_by_id("description-val").text.encode('utf-8', 'replace')
     try :
         print("description_text : " + description_text )
     except UnicodeEncodeError as ex :
