@@ -37,6 +37,8 @@ jira = ""
 sprint = ""
 epic_link = ""
 
+delay_properties = 10
+
 def connectToJira(jira) :
     tools.driver.get("https://jira.atlassian.insim.biz/browse/" + jira)
 
@@ -105,7 +107,7 @@ def recoverJiraInformation() :
 
     # Epic Link
     global epic_link
-    tools.waitLoadingPageByXPATH('//*[@id="customfield_10008-val"]/a')
+    tools.waitLoadingPageByXPATH2(delay_properties, '//*[@id="customfield_10008-val"]/a')
     epic_link = tools.driver.find_element_by_xpath('//*[@id="customfield_10008-val"]/a').text
     print ("epic_link : " + epic_link)
 
