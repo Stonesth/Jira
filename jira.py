@@ -300,7 +300,7 @@ def commentButton() :
 
 def placeTheTextIntoComment(incidentNumber, incidentTitle) :
     tools.waitLoadingPageByID("mce_0_ifr")
-    comment = tools.driver.find_element_by_id("mce_0_ifr").find_elements_by_xpath("/html/body/p")
+    comment = tools.driver.find_element_by_id("mce_0_ifr").find_element_by_xpath("/html/body/p")
     
     comment.send_keys(incidentNumber + " - " + incidentTitle + "\n" + "https://nnbe.topdesk.net/tas/secure/incident?action=lookup&lookup=naam&lookupValue=" + incidentNumber + "\n")
 
