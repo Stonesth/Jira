@@ -8,6 +8,9 @@ from Tools import tools_v000 as tools
 from os.path import dirname
 from datetime import datetime
 from selenium.webdriver.common.keys import Keys
+from selenium.webdriver.support.ui import WebDriverWait
+from selenium.webdriver.common.by import By
+from selenium.webdriver.support import expected_conditions as EC
 
 # -4 for the name of this project Jira
 #save_path = dirname(__file__)[ : -4]
@@ -299,9 +302,11 @@ def commentButton() :
     create_issue_submit.click()
 
 def placeTheTextIntoComment(incidentNumber, incidentTitle) :
-    tools.waitLoadingPageByID("mce_0_ifr")
-    comment = tools.driver.find_element_by_id("mce_0_ifr").find_element_by_xpath("/html/body/p")
-    
+    # tools.waitLoadingPageByID("comment")
+    # comment = tools.driver.find_element_by_id("comment")
+
+    WebDriverWait(tools.driver, 20).until(EC.frame_to_be_available_and_switch_to_it((By.id,'//*[@id="mce_0_ifr"]')))
+    comment = WebDriverWait(tools.driver, 20).until(EC.element_to_be_clickable((By.id, '//*[@id="tinymce"]/p')))
     comment.send_keys(incidentNumber + " - " + incidentTitle + "\n" + "https://nnbe.topdesk.net/tas/secure/incident?action=lookup&lookup=naam&lookupValue=" + incidentNumber + "\n")
 
 def addComment() :
