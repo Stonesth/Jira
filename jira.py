@@ -305,8 +305,8 @@ def placeTheTextIntoComment(incidentNumber, incidentTitle) :
     # tools.waitLoadingPageByID("comment")
     # comment = tools.driver.find_element_by_id("comment")
 
-    WebDriverWait(tools.driver, 20).until(EC.frame_to_be_available_and_switch_to_it((By.id,'//*[@id="mce_0_ifr"]')))
-    comment = WebDriverWait(tools.driver, 20).until(EC.element_to_be_clickable((By.id, '//*[@id="tinymce"]/p')))
+    WebDriverWait(tools.driver, 20).until(EC.frame_to_be_available_and_switch_to_it((By.ID,'//*[@id="mce_0_ifr"]')))
+    comment = WebDriverWait(tools.driver, 20).until(EC.element_to_be_clickable((By.ID, '//*[@id="tinymce"]/p')))
     comment.send_keys(incidentNumber + " - " + incidentTitle + "\n" + "https://nnbe.topdesk.net/tas/secure/incident?action=lookup&lookup=naam&lookupValue=" + incidentNumber + "\n")
 
 def addComment() :
