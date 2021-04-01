@@ -299,8 +299,8 @@ def commentButton() :
     create_issue_submit.click()
 
 def placeTheTextIntoComment(incidentNumber, incidentTitle) :
-    tools.waitLoadingPageByID("comment")
-    comment = tools.driver.find_element_by_id("comment")
+    tools.waitLoadingPageByID("tinymce")
+    comment = tools.driver.find_element_by_id("tinymce")
     comment.send_keys(incidentNumber + " - " + incidentTitle + "\n" + "https://nnbe.topdesk.net/tas/secure/incident?action=lookup&lookup=naam&lookupValue=" + incidentNumber + "\n")
 
 def addComment() :
