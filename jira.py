@@ -309,7 +309,7 @@ def placeTheTextIntoComment(incidentNumber, incidentTitle) :
     comment = WebDriverWait(tools.driver, 20).until(EC.element_to_be_clickable((By.XPATH, '//*[@id="tinymce"]/p')))
     comment.send_keys(incidentNumber + " - " + incidentTitle + "\n" + "https://nnbe.topdesk.net/tas/secure/incident?action=lookup&lookup=naam&lookupValue=" + incidentNumber + "\n")
     # Need to exit the iFrame
-    tools.driver.switchTo().defaultContent();
+    tools.driver.switch_to().default_content();
 
 def addComment() :
     tools.waitLoadingPageByID("issue-comment-add-submit")
