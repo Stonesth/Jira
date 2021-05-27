@@ -231,7 +231,10 @@ def createJira(jiraTitle, description_text, incidentNumber) :
     tools.waitLoadingPageByID("description")
     description = tools.driver.find_element_by_id("description")
     description.send_keys(incidentNumber + "\n")
-    description.send_keys("https://nnbe.topdesk.net/tas/secure/incident?action=lookup&lookup=naam&lookupValue=" + incidentNumber + "\n")
+    if (incidentNumber.startswith('I')) :
+        description.send_keys("https://nnbe.topdesk.net/tas/secure/incident?action=lookup&lookup=naam&lookupValue=" + incidentNumber + "\n")
+    else :
+        description.send_keys("https://nnbe.topdesk.net/tas/secure/newchange?action=lookup&lookup=number&lookupValue=" + incidentNumber + "\n")
 
     # assign to me
     tools.waitLoadingPageByID("assign-to-me-trigger")
@@ -308,7 +311,10 @@ def placeTheTextIntoComment(incidentNumber, incidentTitle) :
     WebDriverWait(tools.driver, 20).until(EC.frame_to_be_available_and_switch_to_it((By.XPATH,'//*[@id="mce_0_ifr"]')))
     tools.waitLoadingPageByID("tinymce")
     comment = WebDriverWait(tools.driver, 20).until(EC.element_to_be_clickable((By.XPATH, '//*[@id="tinymce"]/p')))
-    comment.send_keys(incidentNumber + " - " + incidentTitle + "\n" + "https://nnbe.topdesk.net/tas/secure/incident?action=lookup&lookup=naam&lookupValue=" + incidentNumber + "\n")
+    if (incidentNumber.startswith('I')) :
+        comment.send_keys(incidentNumber + " - " + incidentTitle + "\n" + "https://nnbe.topdesk.net/tas/secure/incident?action=lookup&lookup=naam&lookupValue=" + incidentNumber + "\n")
+    else :
+        comment.send_keys(incidentNumber + " - " + incidentTitle + "\n" + "https://nnbe.topdesk.net/tas/secure/newchange?action=lookup&lookup=number&lookupValue=" + incidentNumber + "\n")
     # Need to exit the iFrame
     tools.driver.switch_to.default_content()
 
