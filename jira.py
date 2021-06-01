@@ -53,6 +53,7 @@ def recoverJiraInformation() :
     # jiraTitle
     global jiraTitle
     tools.waitLoadingPageByID("summary-val")
+    time.sleep(1)
     jiraTitle = tools.driver.find_element_by_id("summary-val").text
     # print("jiraTitle : " + jiraTitle)
     
