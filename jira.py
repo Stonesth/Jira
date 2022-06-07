@@ -48,8 +48,26 @@ def connectToJira(jira) :
 def connectToJiraTST(jira) :
     tools.driver.get("https://jira-test.atlassian.insim.biz/browse/" + jira)
 
-def recoverJiraInformation() :
+# since the 07-06-2022 the SSO is not working anymore.
+# Then need to place the credential
+def loginToJira(user, password) :    
+    tools.driver.get("https://jira.atlassian.insim.biz/login.jsp?nosso")
+    # User
+    tools.waitLoadingPageByXPATH2(delay_properties, '//*[@id="login-form-username"]')
+    projectInput = tools.driver.find_element_by_xpath('//*[@id="login-form-username"]')
+    projectInput.send_keys(user)
     
+    # Password
+    tools.waitLoadingPageByXPATH2(delay_properties, '//*[@id="login-form-password"]')
+    projectInput = tools.driver.find_element_by_xpath('//*[@id="login-form-password"]')
+    projectInput.send_keys(password)
+    
+    
+    tools.waitLoadingPageByXPATH2(delay_properties, '//*[@id="login-form-submit"]')
+    projectInput = tools.driver.find_element_by_xpath('//*[@id="login-form-submit"]')
+    projectInput.click()
+    
+def recoverJiraInformation() :
     # jiraTitle
     global jiraTitle
     tools.waitLoadingPageByID("summary-val")
