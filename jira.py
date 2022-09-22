@@ -315,7 +315,7 @@ def createJira(jiraTitle, description_text, incidentNumber, teamName, reporterNa
     customfield_10008 = tools.driver.find_element_by_id("customfield_10008-field")
     customfield_10008.click()
     customfield_10008.send_keys(epic_link)    
-    time.sleep(1)
+    time.sleep(2)
     customfield_10008.send_keys(Keys.ARROW_DOWN)    
     customfield_10008.send_keys(Keys.ENTER)    
 
