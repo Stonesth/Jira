@@ -229,13 +229,17 @@ def selectJira() :
             tools.driver.quit()
 
 
-def createJira(jiraTitle, description_text, incidentNumber) :
+def createJira(jiraTitle, description_text, incidentNumber, teamName) :
     tools.waitLoadingPageByID("create_link")
     create_link = tools.driver.find_element_by_id("create_link")
     create_link.click()
     # Project
+    tools.waitLoadingPageByID("project-field")
+    project_field = tools.driver.find_element_by_id("project-field")
+    project_field.click()
+    project_field.send_keys(teamName)
+    project_field.send_keys(Keys.ENTER)
     
-
     # Issue Type
     tools.waitLoadingPageByID("issuetype-field")
     issuetype_field = tools.driver.find_element_by_id("issuetype-field")
