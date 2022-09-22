@@ -241,7 +241,7 @@ def createJira(jiraTitle, description_text, incidentNumber, teamName) :
     project_field.send_keys(Keys.ENTER)
     
     # Issue Type
-    tools.waitLoadingPageByID("issuetype-field")
+    tools.waitLoadingPageByID2("20","issuetype-field")
     issuetype_field = tools.driver.find_element_by_id("issuetype-field")
     issuetype_field.click()
     issuetype_field.send_keys("User Story")
