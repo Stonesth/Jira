@@ -304,8 +304,8 @@ def createJira(jiraTitle, description_text, incidentNumber, teamName, reporterNa
     # description.send_keys(Keys.PAGE_UP)
 
     # --------------------- Link ----------------------
-    tools.waitLoadingPageByXPATH2(20, '//*[@id="aui-uid-1"]/strong')
-    link_button = tools.driver.find_element_by_xpath('//*[@id="aui-uid-1"]/strong')
+    tools.waitLoadingPageByXPATH2(20, '//*[@id="horizontal"]/ul/li[2]')
+    link_button = tools.driver.find_element_by_xpath('//*[@id="horizontal"]/ul/li[2]')
     link_button.click()
 
     time.sleep(1)
