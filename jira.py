@@ -233,28 +233,30 @@ def createJira(jiraTitle, description_text, incidentNumber) :
     tools.waitLoadingPageByID("create_link")
     create_link = tools.driver.find_element_by_id("create_link")
     create_link.click()
+    # Project
+    
 
-    # click to select incident
+    # Issue Type
     tools.waitLoadingPageByID("issuetype-field")
     issuetype_field = tools.driver.find_element_by_id("issuetype-field")
     issuetype_field.click()
-    issuetype_field.send_keys("Incident")
+    issuetype_field.send_keys("User Story")
     issuetype_field.send_keys(Keys.ENTER)
     time.sleep(1)
 
-    # summary
+    # Summary
     tools.waitLoadingPageByID("summary")
     summary = tools.driver.find_element_by_id("summary")
     summary.send_keys(jiraTitle)
 
-    # description
+    # Description
     tools.waitLoadingPageByID("description")
     description = tools.driver.find_element_by_id("description")
     description.send_keys(incidentNumber + "\n")
-    if (incidentNumber.startswith('I')) :
-        description.send_keys("https://nnbe.topdesk.net/tas/secure/incident?action=lookup&lookup=naam&lookupValue=" + incidentNumber + "\n")
+    if (incidentNumber.startswith('INC')) :
+        description.send_keys("https://nn.service-now.com/text_search_exact_match.do?sysparm_search=" + incidentNumber + "\n")
     else :
-        description.send_keys("https://nnbe.topdesk.net/tas/secure/newchange?action=lookup&lookup=number&lookupValue=" + incidentNumber + "\n")
+        description.send_keys("https://nn.service-now.com/text_search_exact_match.do?sysparm_search=" + incidentNumber + "\n")
 
     # assign to me
     tools.waitLoadingPageByID("assign-to-me-trigger")
