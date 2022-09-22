@@ -315,7 +315,7 @@ def createJira(jiraTitle, description_text, incidentNumber, teamName, reporterNa
     customfield_10008 = tools.driver.find_element_by_id("customfield_10008-field")
     customfield_10008.click()
     customfield_10008.send_keys(epic_link)    
-    time.sleep(2)
+    time.sleep(1)
     customfield_10008.send_keys(Keys.ARROW_DOWN)    
     customfield_10008.send_keys(Keys.ENTER)    
 
@@ -330,14 +330,14 @@ def createJira(jiraTitle, description_text, incidentNumber, teamName, reporterNa
     labels_textarea.send_keys(Keys.ENTER)
     time.sleep(1)
     # ---------------- References ---------------------
-    tools.waitLoadingPageByXPATH("/html/body/div[8]/div[2]/div[1]/div/form/div[1]/div[2]/div/ul/li[3]/a/strong")
-    reference_button = tools.driver.find_element_by_xpath("/html/body/div[8]/div[2]/div[1]/div/form/div[1]/div[2]/div/ul/li[3]/a/strong")
-    reference_button.click()
+    # tools.waitLoadingPageByXPATH("/html/body/div[8]/div[2]/div[1]/div/form/div[1]/div[2]/div/ul/li[3]/a/strong")
+    # reference_button = tools.driver.find_element_by_xpath("/html/body/div[8]/div[2]/div[1]/div/form/div[1]/div[2]/div/ul/li[3]/a/strong")
+    # reference_button.click()
 
     # Topdesk reference
-    tools.waitLoadingPageByID("customfield_12600")
-    topdesk_reference = tools.driver.find_element_by_id("customfield_12600")
-    topdesk_reference.send_keys(incidentNumber)
+    # tools.waitLoadingPageByID("customfield_12600")
+    # topdesk_reference = tools.driver.find_element_by_id("customfield_12600")
+    # topdesk_reference.send_keys(incidentNumber)
 
     # Submit button
     tools.waitLoadingPageByID("create-issue-submit")
