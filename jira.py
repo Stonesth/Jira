@@ -229,7 +229,7 @@ def selectJira() :
             tools.driver.quit()
 
 
-def createJira(jiraTitle, description_text, incidentNumber, teamName, reporterName) :
+def createJira(jiraTitle, description_text, incidentNumber, teamName, reporterName, assigneeName) :
     tools.waitLoadingPageByID("create_link")
     create_link = tools.driver.find_element_by_id("create_link")
     create_link.click()
@@ -271,15 +271,19 @@ def createJira(jiraTitle, description_text, incidentNumber, teamName, reporterNa
     reporter_field = tools.driver.find_element_by_id("reporter-field")
     reporter_field.click()
     reporter_field.send_keys(reporterName)
-    time.sleep(10)
-    reporter_field.send_keys(Keys.ARROW_DOWN)    
+    time.sleep(1)
+    # reporter_field.send_keys(Keys.ARROW_DOWN)    
     reporter_field.send_keys(Keys.ENTER)
     time.sleep(1)
 
     # assign to me
-    tools.waitLoadingPageByID("assign-to-me-trigger")
-    assign_to_me_trigger = tools.driver.find_element_by_id("assign-to-me-trigger")
-    assign_to_me_trigger.click()
+    tools.waitLoadingPageByID("assignee-field")
+    reporter_field = tools.driver.find_element_by_id("assignee-field")
+    reporter_field.click()
+    reporter_field.send_keys(assigneeName)
+    time.sleep(1)
+    # reporter_field.send_keys(Keys.ARROW_DOWN)    
+    reporter_field.send_keys(Keys.ENTER)
     time.sleep(1)
     
     # # Need to go down of the page
