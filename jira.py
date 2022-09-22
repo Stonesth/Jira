@@ -271,8 +271,7 @@ def createJira(jiraTitle, description_text, incidentNumber, teamName, reporterNa
     reporter_field = tools.driver.find_element_by_id("reporter-field")
     reporter_field.click()
     reporter_field.send_keys(reporterName)
-    time.sleep(1)
-    # reporter_field.send_keys(Keys.ARROW_DOWN)    
+    time.sleep(1) 
     reporter_field.send_keys(Keys.ENTER)
     time.sleep(1)
 
@@ -281,8 +280,7 @@ def createJira(jiraTitle, description_text, incidentNumber, teamName, reporterNa
     reporter_field = tools.driver.find_element_by_id("assignee-field")
     reporter_field.click()
     reporter_field.send_keys(assigneeName)
-    time.sleep(1)
-    # reporter_field.send_keys(Keys.ARROW_DOWN)    
+    time.sleep(1)  
     reporter_field.send_keys(Keys.ENTER)
     time.sleep(1)
     
@@ -294,6 +292,7 @@ def createJira(jiraTitle, description_text, incidentNumber, teamName, reporterNa
     # sprint
     tools.waitLoadingPageByID("customfield_10007-field")
     customfield_10007 = tools.driver.find_element_by_id("customfield_10007-field")
+    customfield_10007.click()
     customfield_10007.send_keys(sprint)
     time.sleep(1)
     customfield_10007.send_keys(Keys.ENTER)
