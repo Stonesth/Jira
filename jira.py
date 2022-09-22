@@ -229,7 +229,7 @@ def selectJira() :
             tools.driver.quit()
 
 
-def createJira(jiraTitle, description_text, incidentNumber, teamName) :
+def createJira(jiraTitle, description_text, incidentNumber, teamName, reporterName) :
     tools.waitLoadingPageByID("create_link")
     create_link = tools.driver.find_element_by_id("create_link")
     create_link.click()
@@ -266,6 +266,14 @@ def createJira(jiraTitle, description_text, incidentNumber, teamName) :
         description.send_keys("https://nn.service-now.com/text_search_exact_match.do?sysparm_search=" + incidentNumber + "\n")
     time.sleep(1)
 
+    # Reporter
+    tools.waitLoadingPageByID("reporter-field")
+    reporter_field = tools.driver.find_element_by_id("reporter-field")
+    reporter_field.click()
+    reporter_field.send_keys(reporterName)
+    reporter_field.send_keys(Keys.ENTER)
+    time.sleep(1)
+
     # assign to me
     tools.waitLoadingPageByID("assign-to-me-trigger")
     assign_to_me_trigger = tools.driver.find_element_by_id("assign-to-me-trigger")
@@ -291,8 +299,8 @@ def createJira(jiraTitle, description_text, incidentNumber, teamName) :
     # description.send_keys(Keys.PAGE_UP)
 
     # --------------------- Link ----------------------
-    tools.waitLoadingPageByXPATH("/html/body/div[8]/div[2]/div[1]/div/form/div[1]/div[2]/div/ul/li[2]/a/strong")
-    link_button = tools.driver.find_element_by_xpath("/html/body/div[8]/div[2]/div[1]/div/form/div[1]/div[2]/div/ul/li[2]/a/strong")
+    tools.waitLoadingPageByXPATH2(20, '//*[@id="aui-uid-1"]/strong')
+    link_button = tools.driver.find_element_by_xpath('//*[@id="aui-uid-1"]/strong')
     link_button.click()
 
     time.sleep(1)
