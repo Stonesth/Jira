@@ -240,6 +240,8 @@ def createJira(jiraTitle, description_text, incidentNumber, teamName) :
     project_field.send_keys(teamName)
     project_field.send_keys(Keys.ENTER)
     
+    time.sleep(1)
+    
     # Issue Type
     tools.waitLoadingPageByID2("20","issuetype-field")
     issuetype_field = tools.driver.find_element_by_id("issuetype-field")
@@ -252,6 +254,7 @@ def createJira(jiraTitle, description_text, incidentNumber, teamName) :
     tools.waitLoadingPageByID("summary")
     summary = tools.driver.find_element_by_id("summary")
     summary.send_keys(jiraTitle)
+    time.sleep(1)
 
     # Description
     tools.waitLoadingPageByID("description")
@@ -261,12 +264,14 @@ def createJira(jiraTitle, description_text, incidentNumber, teamName) :
         description.send_keys("https://nn.service-now.com/text_search_exact_match.do?sysparm_search=" + incidentNumber + "\n")
     else :
         description.send_keys("https://nn.service-now.com/text_search_exact_match.do?sysparm_search=" + incidentNumber + "\n")
+    time.sleep(1)
 
     # assign to me
     tools.waitLoadingPageByID("assign-to-me-trigger")
     assign_to_me_trigger = tools.driver.find_element_by_id("assign-to-me-trigger")
     assign_to_me_trigger.click()
-
+    time.sleep(1)
+    
     # # Need to go down of the page
     # tools.waitLoadingPageByID("description")
     # description = tools.driver.find_element_by_id("description")
