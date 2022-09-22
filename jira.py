@@ -271,6 +271,7 @@ def createJira(jiraTitle, description_text, incidentNumber, teamName, reporterNa
     reporter_field = tools.driver.find_element_by_id("reporter-field")
     reporter_field.click()
     reporter_field.send_keys(reporterName)
+    time.sleep(10)
     reporter_field.send_keys(Keys.ARROW_DOWN)    
     reporter_field.send_keys(Keys.ENTER)
     time.sleep(1)
