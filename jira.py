@@ -50,8 +50,9 @@ def connectToJiraTST(jira) :
 
 # since the 07-06-2022 the SSO is not working anymore.
 # Then need to place the credential
-def loginToJira(user, password) :    
-    tools.driver.get("https://jira.atlassian.insim.biz/login.jsp?nosso")
+# Since the 01-08-2022 the SSO is working back for PRD but not for TST
+def loginToJira(url, user, password) :    
+    tools.driver.get(url)
     # User
     tools.waitLoadingPageByXPATH2(delay_properties, '//*[@id="login-form-username"]')
     projectInput = tools.driver.find_element_by_xpath('//*[@id="login-form-username"]')
