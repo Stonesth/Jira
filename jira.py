@@ -271,6 +271,7 @@ def createJira(jiraTitle, description_text, incidentNumber, teamName, reporterNa
     reporter_field = tools.driver.find_element_by_id("reporter-field")
     reporter_field.click()
     reporter_field.send_keys(reporterName)
+    reporter_field.send_keys(Keys.ARROW_DOWN)    
     reporter_field.send_keys(Keys.ENTER)
     time.sleep(1)
 
@@ -317,7 +318,11 @@ def createJira(jiraTitle, description_text, incidentNumber, teamName, reporterNa
     # Labels
     tools.waitLoadingPageByID("labels-textarea")
     labels_textarea = tools.driver.find_element_by_id("labels-textarea")
-    labels_textarea.send_keys("IT4IT")
+    labels_textarea.send_keys("IT4IT")   
+    time.sleep(1)
+    labels_textarea.send_keys(Keys.ENTER)
+    labels_textarea.send_keys("TOS_READY")   
+    time.sleep(1)
     labels_textarea.send_keys(Keys.ENTER)
     time.sleep(1)
     # ---------------- References ---------------------
