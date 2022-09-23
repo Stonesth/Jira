@@ -373,3 +373,11 @@ def addComment() :
     # add this wait to be sure that the page is loaded correctly before to go to another steps.
     tools.waitLoadingPageByID("footer-comment-button")
 
+def openJira(jiraTitle) :
+    tools.waitLoadingPageByID("quickSearchInput")
+    quick_search_input = tools.driver.find_element_by_id("quickSearchInput")
+    quick_search_input.click()
+    quick_search_input.send_keys(jiraTitle)    
+    time.sleep(1)
+    quick_search_input.send_keys(Keys.ARROW_DOWN)    
+    quick_search_input.send_keys(Keys.ENTER)
