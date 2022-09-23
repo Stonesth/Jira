@@ -380,4 +380,5 @@ def openJira(jiraTitle) :
     quick_search_input.send_keys(jiraTitle)    
     time.sleep(1)
     quick_search_input.send_keys(Keys.ARROW_DOWN)    
+    time.sleep(1)
     quick_search_input.send_keys(Keys.ENTER)
