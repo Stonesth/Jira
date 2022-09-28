@@ -257,8 +257,9 @@ def createJira(jiraTitle, description_text, incidentNumber, teamName, reporterNa
     time.sleep(1)
 
     # Description
-    tools.waitLoadingPageByID("description")
-    description = tools.driver.find_element_by_id("description")
+    tools.waitLoadingPageByID("mce_7_ifr")
+    description = tools.driver.find_element_by_id("mce_7_ifr")
+    description.click()
     description.send_keys(incidentNumber + "\n")
     if (incidentNumber.startswith('INC')) :
         description.send_keys("https://nn.service-now.com/text_search_exact_match.do?sysparm_search=" + incidentNumber + "\n")
