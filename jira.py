@@ -344,6 +344,9 @@ def createJira(jiraTitle, description_text, incidentNumber, teamName, reporterNa
     tools.waitLoadingPageByID("create-issue-submit")
     create_issue_submit = tools.driver.find_element_by_id("create-issue-submit")
     create_issue_submit.click()
+    
+    # Need to wait the page reload
+    time.sleep(10)
 
 def connectToJiraBoard() :
     tools.driver.get("https://jira.atlassian.insim.biz/secure/RapidBoard.jspa?rapidView=464")
@@ -378,6 +381,7 @@ def openJira(jiraTitle) :
     tools.waitLoadingPageByID("quickSearchInput")
     quick_search_input = tools.driver.find_element_by_id("quickSearchInput")
     quick_search_input.click()
+    time.sleep(1)
     quick_search_input.send_keys(jiraTitle)    
     time.sleep(1)
     quick_search_input.send_keys(Keys.ARROW_DOWN)    
