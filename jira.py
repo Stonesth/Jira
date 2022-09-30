@@ -265,6 +265,8 @@ def createJira(jiraTitle, description_text, incidentNumber, teamName, reporterNa
         description.send_keys("https://nn.service-now.com/text_search_exact_match.do?sysparm_search=" + incidentNumber + "\n")
     else :
         description.send_keys("https://nn.service-now.com/text_search_exact_match.do?sysparm_search=" + incidentNumber + "\n")
+        
+    description.send_keys(description_text)
     time.sleep(1)
 
     # Reporter
