@@ -253,7 +253,7 @@ def createJira(jiraTitle, description_text, incidentNumber, teamName, reporterNa
     # Summary
     tools.waitLoadingPageByID("summary")
     summary = tools.driver.find_element_by_id("summary")
-    summary.send_keys(jiraTitle)
+    summary.send_keys(jiraTitle.decode('utf-8'))
     time.sleep(1)
 
     # Description
