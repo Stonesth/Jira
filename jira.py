@@ -384,7 +384,7 @@ def openJira(jiraTitle) :
     quick_search_input = tools.driver.find_element_by_id("quickSearchInput")
     quick_search_input.click()
     time.sleep(1)
-    quick_search_input.send_keys(jiraTitle)    
+    quick_search_input.send_keys(jiraTitle.decode('utf-8'))    
     time.sleep(1)
     quick_search_input.send_keys(Keys.ARROW_DOWN)    
     time.sleep(1)
