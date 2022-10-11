@@ -257,10 +257,13 @@ def createJira(jiraTitle, description_text, incidentNumber, teamName, reporterNa
     time.sleep(1)
 
     # Description
-    tools.waitLoadingPageByID("mce_7_ifr")
-    description = tools.driver.find_element_by_id("mce_7_ifr")
+    tools.waitLoadingPageByID("description")
+    description = tools.driver.find_element_by_id("description")
     description.click()
     description.send_keys(incidentNumber + "\n")
+    
+    # Before we have in TopDesk the differnece between incident and Change, here now since the 01/09/2022 we used Service-Now => 
+    # the inf is not necessary
     if (incidentNumber.startswith('INC')) :
         description.send_keys("https://nn.service-now.com/text_search_exact_match.do?sysparm_search=" + incidentNumber + "\n")
     else :
