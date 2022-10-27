@@ -138,7 +138,7 @@ def recoverJiraInformation() :
     # When Jira was created
     global created_val
     tools.waitLoadingPageByXPATH2(delay_properties, '//*[@id="created-val"]/time')
-    created_val = tools.driver.find_element_by_xpath('//*[@id="created-val"]/time').text
+    created_val = tools.driver.find_element_by_xpath('//*[@id="created-val"]/time').get_attribute("datetime")
     print ("created_val : " + created_val)
 
 def createFolderJira(jira) :
