@@ -39,6 +39,7 @@ jira = ""
 
 sprint = ""
 epic_link = ""
+created_val = ""
 
 delay_properties = 10
 
@@ -134,6 +135,11 @@ def recoverJiraInformation() :
     epic_link = tools.driver.find_element_by_xpath('//*[@id="customfield_10008-val"]/a').text
     print ("epic_link : " + epic_link)
 
+    # When Jira was created
+    global created_val
+    tools.waitLoadingPageByXPATH2(delay_properties, '//*[@id="created-val"]/time')
+    created_val = tools.driver.find_element_by_xpath('//*[@id="created-val"]/time').text
+    print ("created_val : " + created_val)
 
 def createFolderJira(jira) :
     if os.path.isdir(save_path + jira) :
