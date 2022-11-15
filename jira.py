@@ -264,7 +264,11 @@ def createJira(jiraTitle, description_text, incidentNumber, teamName, reporterNa
 
     # Description
     tools.waitLoadingPageByID("description")
-    description = tools.driver.find_element_by_id("description")
+    # description = tools.driver.find_element_by_id("description")
+    # description.click()
+    wait = WebDriverWait(tools.driver, 10)
+    description = wait.until(EC.invisibility_of_element_located((By.ID, 'description')))
+    description = wait.until(EC.element_to_be_clickable((By.ID, 'description')))
     description.click()
     description.send_keys(incidentNumber + "\n")
     
