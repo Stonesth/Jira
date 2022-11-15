@@ -263,13 +263,13 @@ def createJira(jiraTitle, description_text, incidentNumber, teamName, reporterNa
     time.sleep(1)
 
     # Description
-    tools.waitLoadingPageByID("description")
-    # description = tools.driver.find_element_by_id("description")
-    # description.click()
-    wait = WebDriverWait(tools.driver, 10)
-    description = wait.until(EC.invisibility_of_element_located((By.ID, 'description')))
-    description = wait.until(EC.element_to_be_clickable((By.ID, 'description')))
+    tools.waitLoadingPageByID("description-wiki-edit")
+    description = tools.driver.find_element_by_id("description")
     description.click()
+    # wait = WebDriverWait(tools.driver, 10)
+    # description = wait.until(EC.invisibility_of_element_located((By.ID, 'description-wiki-edit')))
+    # description = wait.until(EC.element_to_be_clickable((By.ID, 'description-wiki-edit')))
+    # description.click()
     description.send_keys(incidentNumber + "\n")
     
     # Before we have in TopDesk the differnece between incident and Change, here now since the 01/09/2022 we used Service-Now => 
