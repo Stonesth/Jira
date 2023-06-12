@@ -43,6 +43,15 @@ created_val = ""
 
 delay_properties = 10
 
+
+def connectToJiraInsim(jira, userInsim) :
+    tools.driver.get("https://jira.atlassian.insim.biz/browse/" + jira)
+    projectInput = tools.driver.find_element_by_xpath('/html/body/div/form[1]/div/div/div[2]/div[1]/div/div/div/div/div[1]/div[3]/div/div/div/div[2]/div[2]/div/input[1]')
+    projectInput.send_keys(userInsim)
+    
+    projectInput = tools.driver.find_element_by_xpath('//*[@id="idSIButton9"]')
+    projectInput.click()
+    
 def connectToJira(jira) :
     tools.driver.get("https://jira.atlassian.insim.biz/browse/" + jira)
 
