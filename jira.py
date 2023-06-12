@@ -43,6 +43,8 @@ created_val = ""
 
 delay_properties = 10
 
+userInsim = ""
+
 
 def connectToJiraInsim(jira, userInsim) :
     tools.driver.get("https://jira.atlassian.insim.biz/browse/" + jira)
