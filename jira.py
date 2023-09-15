@@ -277,7 +277,8 @@ def createJira(jiraTitle, description_text, incidentNumber, teamName, reporterNa
 
     # Description
     tools.waitLoadingPageByID("description")
-    description = tools.driver.find_element_by_id("description")
+    # description = tools.driver.find_element_by_id("description") # since the 2023-09-15
+    description = tools.driver.find_element_by_id("mce_7_ifr") # since the 2023-09-15
     description.click()
     # wait = WebDriverWait(tools.driver, 10)
     # description = wait.until(EC.invisibility_of_element_located((By.ID, 'description-wiki-edit')))
