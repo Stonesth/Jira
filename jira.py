@@ -53,6 +53,7 @@ def connectToJiraInsim(jira, userInsim) :
     projectInput = tools.driver.find_element_by_xpath('/html/body/div/form[1]/div/div/div[2]/div[1]/div/div/div/div/div[1]/div[3]/div/div/div/div[2]/div[2]/div/input[1]')
     projectInput.send_keys(userInsim)
     
+    tools.waitLoadingPageByXPATH2(delay_properties, '//*[@id="idSIButton9"]')
     projectInput = tools.driver.find_element_by_xpath('//*[@id="idSIButton9"]')
     projectInput.click()
     
