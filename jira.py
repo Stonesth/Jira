@@ -50,11 +50,11 @@ def connectToJiraInsim(jira, userInsim) :
     tools.driver.get("https://jira.atlassian.insim.biz/browse/" + jira)
     
     tools.waitLoadingPageByXPATH2(delay_properties, '/html/body/div/form[1]/div/div/div[2]/div[1]/div/div/div/div/div[1]/div[3]/div/div/div/div[2]/div[2]/div/input[1]')
-    projectInput = tools.driver.find_element_by_xpath('/html/body/div/form[1]/div/div/div[2]/div[1]/div/div/div/div/div[1]/div[3]/div/div/div/div[2]/div[2]/div/input[1]')
+    projectInput = tools.driver.find_element(By.XPATH, '/html/body/div/form[1]/div/div/div[2]/div[1]/div/div/div/div/div[1]/div[3]/div/div/div/div[2]/div[2]/div/input[1]')
     projectInput.send_keys(userInsim)
     
     tools.waitLoadingPageByXPATH2(delay_properties, '//*[@id="idSIButton9"]')
-    projectInput = tools.driver.find_element_by_xpath('//*[@id="idSIButton9"]')
+    projectInput = tools.driver.find_element(By.XPATH, '//*[@id="idSIButton9"]')
     projectInput.click()
     
 def connectToJira(jira) :
@@ -70,17 +70,17 @@ def loginToJira(url, user, password) :
     tools.driver.get(url)
     # User
     tools.waitLoadingPageByXPATH2(delay_properties, '//*[@id="login-form-username"]')
-    projectInput = tools.driver.find_element_by_xpath('//*[@id="login-form-username"]')
+    projectInput = tools.driver.find_element(By.XPATH, '//*[@id="login-form-username"]')
     projectInput.send_keys(user)
     
     # Password
     tools.waitLoadingPageByXPATH2(delay_properties, '//*[@id="login-form-password"]')
-    projectInput = tools.driver.find_element_by_xpath('//*[@id="login-form-password"]')
+    projectInput = tools.driver.find_element(By.XPATH, '//*[@id="login-form-password"]')
     projectInput.send_keys(password)
     
     
     tools.waitLoadingPageByXPATH2(delay_properties, '//*[@id="login-form-submit"]')
-    projectInput = tools.driver.find_element_by_xpath('//*[@id="login-form-submit"]')
+    projectInput = tools.driver.find_element(By.XPATH, '//*[@id="login-form-submit"]')
     projectInput.click()
     
 def recoverJiraInformation() :
@@ -88,7 +88,7 @@ def recoverJiraInformation() :
     global jiraTitle
     tools.waitLoadingPageByID("summary-val")
     time.sleep(1)
-    jiraTitle = tools.driver.find_element_by_id("summary-val").text
+    jiraTitle = tools.driver.find_element(By.ID, "summary-val").text
     # print("jiraTitle : " + jiraTitle)
     
     # incidentNumber
@@ -111,7 +111,7 @@ def recoverJiraInformation() :
     # description_text
     global description_text 
     tools.waitLoadingPageByID("description-val")
-    description_text = tools.driver.find_element_by_id("description-val").text.encode('utf-8', 'ignore')
+    description_text = tools.driver.find_element(By.ID, "description-val").text.encode('utf-8', 'ignore')
     try :
         print("description_text : " + description_text )
     except UnicodeEncodeError as ex :
@@ -146,13 +146,13 @@ def recoverJiraInformation() :
     # Epic Link
     global epic_link
     tools.waitLoadingPageByXPATH2(delay_properties, '//*[@id="customfield_10008-val"]/a')
-    epic_link = tools.driver.find_element_by_xpath('//*[@id="customfield_10008-val"]/a').text
+    epic_link = tools.driver.find_element(By.XPATH, '//*[@id="customfield_10008-val"]/a').text
     print ("epic_link : " + epic_link)
 
     # When Jira was created
     global created_val
     tools.waitLoadingPageByXPATH2(delay_properties, '//*[@id="created-val"]/time')
-    created_val = tools.driver.find_element_by_xpath('//*[@id="created-val"]/time').get_attribute("datetime")
+    created_val = tools.driver.find_element(By.XPATH, '//*[@id="created-val"]/time').get_attribute("datetime")
     print ("created_val : " + created_val)
 
 def createFolderJira(jira) :
@@ -200,12 +200,12 @@ def createFileInto(jira, jiraTitle, description_text, path, name_of_file ) :
 
 def startJira() :
     tools.waitLoadingPageByID("opsbar-transitions_more")
-    workflow = tools.driver.find_element_by_id("opsbar-transitions_more")
+    workflow = tools.driver.find_element(By.ID, "opsbar-transitions_more")
     workflow.click()
     
     # 
     tools.waitLoadingPageByID("action_id_51")
-    workflow = tools.driver.find_element_by_id("action_id_51")
+    workflow = tools.driver.find_element(By.ID, "action_id_51")
     workflow.click()
 
     time.sleep(1)
@@ -220,29 +220,29 @@ def selectJira() :
     try :
         # Normal ticket
         tools.waitLoadingPageByXPATH("/html/body/div[1]/section/div[2]/div[2]/div[3]/div[4]/div[1]/div[2]/div/ul/li[1]/div/div[1]/div[1]/div[1]/a")
-        jira_link = tools.driver.find_element_by_xpath("/html/body/div[1]/section/div[2]/div[2]/div[3]/div[4]/div[1]/div[2]/div/ul/li[1]/div/div[1]/div[1]/div[1]/a")                                                         
+        jira_link = tools.driver.find_element(By.XPATH, "/html/body/div[1]/section/div[2]/div[2]/div[3]/div[4]/div[1]/div[2]/div/ul/li[1]/div/div[1]/div[1]/div[1]/a")                                                         
         jira_link.click()
         
         tools.waitLoadingPageByXPATH("/html/body/div[1]/section/div[2]/div[2]/div[3]/div[4]/div[2]/div[2]/div[1]/div[1]/header/div[1]/div[3]/dl/dd/a")
-        jira_link = tools.driver.find_element_by_xpath("/html/body/div[1]/section/div[2]/div[2]/div[3]/div[4]/div[2]/div[2]/div[1]/div[1]/header/div[1]/div[3]/dl/dd/a")                     
+        jira_link = tools.driver.find_element(By.XPATH, "/html/body/div[1]/section/div[2]/div[2]/div[3]/div[4]/div[2]/div[2]/div[1]/div[1]/header/div[1]/div[3]/dl/dd/a")                     
         jira_link.click()
 
         tools.waitLoadingPageByXPATH("/html/body/div[1]/section/div[2]/div/div/div/div/div[2]/div/header/div/header/div/div[2]/ol/li[2]/a")
-        jira_link = tools.driver.find_element_by_xpath("/html/body/div[1]/section/div[2]/div/div/div/div/div[2]/div/header/div/header/div/div[2]/ol/li[2]/a")   
+        jira_link = tools.driver.find_element(By.XPATH, "/html/body/div[1]/section/div[2]/div/div/div/div/div[2]/div/header/div/header/div/div[2]/ol/li[2]/a")   
         jira = jira_link.text
     except :
         try :
             # subtask from a ticket
             tools.waitLoadingPageByXPATH("/html/body/div[1]/section/div[2]/div[2]/div[3]/div[4]/div[1]/div[2]/div/ul/li[1]/div/div[2]/div/div[1]/div")
-            jira_link = tools.driver.find_element_by_xpath("/html/body/div[1]/section/div[2]/div[2]/div[3]/div[4]/div[1]/div[2]/div/ul/li[1]/div/div[2]/div/div[1]/div")                                                         
+            jira_link = tools.driver.find_element(By.XPATH, "/html/body/div[1]/section/div[2]/div[2]/div[3]/div[4]/div[1]/div[2]/div/ul/li[1]/div/div[2]/div/div[1]/div")                                                         
             jira_link.click()
         
             tools.waitLoadingPageByXPATH("/html/body/div[1]/section/div[2]/div[2]/div[3]/div[4]/div[2]/div[2]/div[1]/div[1]/header/div[1]/div[3]/dl/dd/a")
-            jira_link = tools.driver.find_element_by_xpath("/html/body/div[1]/section/div[2]/div[2]/div[3]/div[4]/div[2]/div[2]/div[1]/div[1]/header/div[1]/div[3]/dl/dd/a")                     
+            jira_link = tools.driver.find_element(By.XPATH, "/html/body/div[1]/section/div[2]/div[2]/div[3]/div[4]/div[2]/div[2]/div[1]/div[1]/header/div[1]/div[3]/dl/dd/a")                     
             jira_link.click()
 
             tools.waitLoadingPageByXPATH("/html/body/div[1]/section/div[2]/div/div/div/div/div[2]/div/header/div/header/div/div[2]/ol/li[3]/a")
-            jira_link = tools.driver.find_element_by_xpath("/html/body/div[1]/section/div[2]/div/div/div/div/div[2]/div/header/div/header/div/div[2]/ol/li[3]/a")
+            jira_link = tools.driver.find_element(By.XPATH, "/html/body/div[1]/section/div[2]/div/div/div/div/div[2]/div/header/div/header/div/div[2]/ol/li[3]/a")
             jira = jira_link.text
 
         except :
@@ -251,11 +251,11 @@ def selectJira() :
 
 def createJira(jiraTitle, description_text, incidentNumber, teamName, reporterName, assigneeName) :
     tools.waitLoadingPageByID("create_link")
-    create_link = tools.driver.find_element_by_id("create_link")
+    create_link = tools.driver.find_element(By.ID, "create_link")
     create_link.click()
     # Project
     tools.waitLoadingPageByID("project-field")
-    project_field = tools.driver.find_element_by_id("project-field")
+    project_field = tools.driver.find_element(By.ID, "project-field")
     project_field.click()
     project_field.send_keys(teamName)
     project_field.send_keys(Keys.ENTER)
@@ -264,7 +264,7 @@ def createJira(jiraTitle, description_text, incidentNumber, teamName, reporterNa
     
     # Issue Type
     tools.waitLoadingPageByID2(20,"issuetype-field")
-    issuetype_field = tools.driver.find_element_by_id("issuetype-field")
+    issuetype_field = tools.driver.find_element(By.ID, "issuetype-field")
     issuetype_field.click()
     issuetype_field.send_keys("User Story")
     issuetype_field.send_keys(Keys.ENTER)
@@ -272,14 +272,14 @@ def createJira(jiraTitle, description_text, incidentNumber, teamName, reporterNa
 
     # Summary
     tools.waitLoadingPageByID("summary")
-    summary = tools.driver.find_element_by_id("summary")
+    summary = tools.driver.find_element(By.ID, "summary")
     summary.send_keys(jiraTitle.decode('utf-8'))
     time.sleep(1)
 
     # Description
     tools.waitLoadingPageByID("description")
-    # description = tools.driver.find_element_by_id("description") # since the 2023-09-15
-    description = tools.driver.find_element_by_id("mce_7_ifr") # since the 2023-09-15
+    # description = tools.driver.find_element(By.ID, "description") # since the 2023-09-15
+    description = tools.driver.find_element(By.ID, "mce_7_ifr") # since the 2023-09-15
     description.click()
     # wait = WebDriverWait(tools.driver, 10)
     # description = wait.until(EC.invisibility_of_element_located((By.ID, 'description-wiki-edit')))
@@ -299,7 +299,7 @@ def createJira(jiraTitle, description_text, incidentNumber, teamName, reporterNa
 
     # Reporter
     tools.waitLoadingPageByID("reporter-field")
-    reporter_field = tools.driver.find_element_by_id("reporter-field")
+    reporter_field = tools.driver.find_element(By.ID, "reporter-field")
     reporter_field.click()
     reporter_field.send_keys(reporterName)
     time.sleep(1) 
@@ -308,7 +308,7 @@ def createJira(jiraTitle, description_text, incidentNumber, teamName, reporterNa
 
     # assign to me
     tools.waitLoadingPageByID("assignee-field")
-    reporter_field = tools.driver.find_element_by_id("assignee-field")
+    reporter_field = tools.driver.find_element(By.ID, "assignee-field")
     reporter_field.click()
     reporter_field.send_keys(assigneeName)
     time.sleep(1)  
@@ -317,12 +317,12 @@ def createJira(jiraTitle, description_text, incidentNumber, teamName, reporterNa
     
     # # Need to go down of the page
     # tools.waitLoadingPageByID("description")
-    # description = tools.driver.find_element_by_id("description")
+    # description = tools.driver.find_element(By.ID, "description")
     # description.send_keys(Keys.PAGE_DOWN)
 
     # sprint
     tools.waitLoadingPageByID("customfield_10007-field")
-    customfield_10007 = tools.driver.find_element_by_id("customfield_10007-field")
+    customfield_10007 = tools.driver.find_element(By.ID, "customfield_10007-field")
     customfield_10007.click()
     customfield_10007.send_keys(sprint)
     time.sleep(1)
@@ -331,19 +331,19 @@ def createJira(jiraTitle, description_text, incidentNumber, teamName, reporterNa
 
     # #Need to go Up of the page
     # tools.waitLoadingPageByID("description")
-    # description = tools.driver.find_element_by_id("description")
+    # description = tools.driver.find_element(By.ID, "description")
     # description.send_keys(Keys.PAGE_UP)
 
     # --------------------- Link ----------------------
     tools.waitLoadingPageByXPATH2(20, '//*[@id="horizontal"]/ul/li[2]')
-    link_button = tools.driver.find_element_by_xpath('//*[@id="horizontal"]/ul/li[2]')
+    link_button = tools.driver.find_element(By.XPATH, '//*[@id="horizontal"]/ul/li[2]')
     link_button.click()
 
     time.sleep(1)
 
     # Epic Link
     tools.waitLoadingPageByID("customfield_10008-field")
-    customfield_10008 = tools.driver.find_element_by_id("customfield_10008-field")
+    customfield_10008 = tools.driver.find_element(By.ID, "customfield_10008-field")
     customfield_10008.click()
     customfield_10008.send_keys(epic_link)    
     time.sleep(1)
@@ -352,7 +352,7 @@ def createJira(jiraTitle, description_text, incidentNumber, teamName, reporterNa
 
     # Labels
     tools.waitLoadingPageByID("labels-textarea")
-    labels_textarea = tools.driver.find_element_by_id("labels-textarea")
+    labels_textarea = tools.driver.find_element(By.ID, "labels-textarea")
     labels_textarea.send_keys("IT4IT")   
     time.sleep(1)
     labels_textarea.send_keys(Keys.ENTER)
@@ -362,17 +362,17 @@ def createJira(jiraTitle, description_text, incidentNumber, teamName, reporterNa
     time.sleep(1)
     # ---------------- References ---------------------
     # tools.waitLoadingPageByXPATH("/html/body/div[8]/div[2]/div[1]/div/form/div[1]/div[2]/div/ul/li[3]/a/strong")
-    # reference_button = tools.driver.find_element_by_xpath("/html/body/div[8]/div[2]/div[1]/div/form/div[1]/div[2]/div/ul/li[3]/a/strong")
+    # reference_button = tools.driver.find_element(By.XPATH, "/html/body/div[8]/div[2]/div[1]/div/form/div[1]/div[2]/div/ul/li[3]/a/strong")
     # reference_button.click()
 
     # Topdesk reference
     # tools.waitLoadingPageByID("customfield_12600")
-    # topdesk_reference = tools.driver.find_element_by_id("customfield_12600")
+    # topdesk_reference = tools.driver.find_element(By.ID, "customfield_12600")
     # topdesk_reference.send_keys(incidentNumber)
 
     # Submit button
     tools.waitLoadingPageByID("create-issue-submit")
-    create_issue_submit = tools.driver.find_element_by_id("create-issue-submit")
+    create_issue_submit = tools.driver.find_element(By.ID, "create-issue-submit")
     create_issue_submit.click()
     
     # Need to wait the page reload
@@ -383,12 +383,12 @@ def connectToJiraBoard() :
 
 def commentButton() :
     tools.waitLoadingPageByID("footer-comment-button")
-    create_issue_submit = tools.driver.find_element_by_id("footer-comment-button")
+    create_issue_submit = tools.driver.find_element(By.ID, "footer-comment-button")
     create_issue_submit.click()
 
 def placeTheTextIntoComment(incidentNumber, incidentTitle) :
     # tools.waitLoadingPageByID("comment")
-    # comment = tools.driver.find_element_by_id("comment")
+    # comment = tools.driver.find_element(By.ID, "comment")
 
     WebDriverWait(tools.driver, 20).until(EC.frame_to_be_available_and_switch_to_it((By.XPATH,'//*[@id="mce_0_ifr"]')))
     tools.waitLoadingPageByID("tinymce")
@@ -402,14 +402,14 @@ def placeTheTextIntoComment(incidentNumber, incidentTitle) :
 
 def addComment() :
     tools.waitLoadingPageByID("issue-comment-add-submit")
-    create_issue_submit = tools.driver.find_element_by_id("issue-comment-add-submit")
+    create_issue_submit = tools.driver.find_element(By.ID, "issue-comment-add-submit")
     create_issue_submit.click()
     # add this wait to be sure that the page is loaded correctly before to go to another steps.
     tools.waitLoadingPageByID("footer-comment-button")
 
 def openJira(jiraTitle) :
     tools.waitLoadingPageByID("quickSearchInput")
-    quick_search_input = tools.driver.find_element_by_id("quickSearchInput")
+    quick_search_input = tools.driver.find_element(By.ID, "quickSearchInput")
     quick_search_input.click()
     time.sleep(1)
     quick_search_input.send_keys(jiraTitle.decode('utf-8'))    
