@@ -111,9 +111,9 @@ def recoverJiraInformation() :
     # description_text
     global description_text 
     tools.waitLoadingPageByID("description-val")
-    description_text = tools.driver.find_element(By.ID, "description-val").text.encode('utf-8', 'ignore')
+    description_text = tools.driver.find_element(By.ID, "description-val").text.encode('utf-8', 'ignore').decode()
     try :
-        print("description_text : " + description_text.decode())  # Convertir les bytes en str avant la concaténation
+        print("description_text : " + description_text)  # Convertir les bytes en str avant la concaténation
     except UnicodeEncodeError as ex :
         print("UnicodeEncodeError : ")
         description_text = "Error to take the description"
