@@ -177,7 +177,7 @@ def createFileInto(jira, jiraTitle, description_text, path, name_of_file ) :
         file1.write("========================================================================================================================"+"\n")
         file1.write(datetime.now().strftime("%Y-%m-%d %H:%M:%S") + "\n")
         file1.write("\n")
-        file1.write(jiraTitle.encode('utf-8').strip() + "\n")
+        file1.write(jiraTitle.encode('utf-8').strip().decode() + "\n")
         file1.write("\n")
         try :
             file1.write(description_text + "\n")
