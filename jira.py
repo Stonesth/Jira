@@ -55,6 +55,7 @@ def connectToJiraInsim(jira, userInsim) :
     
     tools.waitLoadingPageByXPATH2(delay_properties, '//*[@id="idSIButton9"]')
     projectInput = tools.driver.find_element(By.XPATH, '//*[@id="idSIButton9"]')
+    time.sleep(1)
     projectInput.click()
     
 def connectToJira(jira) :
