@@ -57,6 +57,17 @@ def connectToJiraInsim(jira, userInsim) :
     projectInput = tools.driver.find_element(By.XPATH, '//*[@id="idSIButton9"]')
     time.sleep(1)
     projectInput.click()
+
+    # Need to test if the connection is succeed or not
+    # Test if there is or not another possibility to connect
+    if tools.waitLoadingPageByXPATH2(delay_properties, '//*[@id="differentVerificationOption"]') :
+        otherConnection = tools.driver.find_element(By.XPATH, '//*[@id="differentVerificationOption"]')
+        otherConnection.click()
+
+        # Used the validation via the app
+        verificationOption1 = tools.waitLoadingPageByXPATH2(delay_properties, '//*[@id="verificationOption1"]')
+        verificationOption1.click()
+        
     
 def connectToJira(jira) :
     tools.driver.get("https://jira.atlassian.insim.biz/browse/" + jira)
