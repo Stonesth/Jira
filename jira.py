@@ -293,7 +293,8 @@ def createJira(jiraTitle, description_text, incidentNumber, teamName, reporterNa
     tools.waitLoadingPageByID("description")
     # description = tools.driver.find_element(By.ID, "description") # since the 2023-09-15
     # description = tools.driver.find_element(By.ID, "mce_7_ifr") # since the 2023-09-15
-    description = tools.driver.find_element(By.ID, "description") # since the 2024-01-25
+    # description = tools.driver.find_element(By.ID, "description") # since the 2024-01-25
+    description = tools.driver.find_element(By.ID, "mce_7_ifr") # since the 2024-02-19
     description.click()
     # wait = WebDriverWait(tools.driver, 10)
     # description = wait.until(EC.invisibility_of_element_located((By.ID, 'description-wiki-edit')))
@@ -406,9 +407,7 @@ def placeTheTextIntoComment(incidentNumber, incidentTitle) :
 
     WebDriverWait(tools.driver, 20).until(EC.frame_to_be_available_and_switch_to_it((By.XPATH,'//*[@id="mce_0_ifr"]')))
     tools.waitLoadingPageByID("tinymce")
-    # comment = WebDriverWait(tools.driver, 20).until(EC.element_to_be_clickable((By.XPATH, '//*[@id="tinymce"]/p')))
-    comment = tools.driver.find_element(By.XPATH, '//*[@id="mce_7_ifr"]')
-    
+    comment = WebDriverWait(tools.driver, 20).until(EC.element_to_be_clickable((By.XPATH, '//*[@id="tinymce"]/p')))
     if (incidentNumber.startswith('I')) :
         comment.send_keys(incidentNumber + " - " + incidentTitle + "\n" + "https://nnbe.topdesk.net/tas/secure/incident?action=lookup&lookup=naam&lookupValue=" + incidentNumber + "\n")
     else :
