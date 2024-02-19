@@ -65,7 +65,8 @@ def connectToJiraInsim(jira, userInsim) :
         otherConnection.click()
 
         # Used the validation via the app
-        verificationOption1 = tools.waitLoadingPageByXPATH2(delay_properties, '//*[@id="verificationOption1"]')
+        tools.waitLoadingPageByXPATH2(delay_properties, '//*[@id="verificationOption1"]')
+        verificationOption1 = tools.driver.find_element(By.XPATH, '//*[@id="verificationOption1"]')
         verificationOption1.click()
         
     
