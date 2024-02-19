@@ -407,7 +407,7 @@ def placeTheTextIntoComment(incidentNumber, incidentTitle) :
     WebDriverWait(tools.driver, 20).until(EC.frame_to_be_available_and_switch_to_it((By.XPATH,'//*[@id="mce_0_ifr"]')))
     tools.waitLoadingPageByID("tinymce")
     # comment = WebDriverWait(tools.driver, 20).until(EC.element_to_be_clickable((By.XPATH, '//*[@id="tinymce"]/p')))
-    comment = tools.driver.find_element(By.XPATH, '//*[@id="description"]')
+    comment = tools.driver.find_element(By.XPATH, '//*[@id="mce_7_ifr"]')
     
     if (incidentNumber.startswith('I')) :
         comment.send_keys(incidentNumber + " - " + incidentTitle + "\n" + "https://nnbe.topdesk.net/tas/secure/incident?action=lookup&lookup=naam&lookupValue=" + incidentNumber + "\n")
