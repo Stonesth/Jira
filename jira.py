@@ -44,6 +44,7 @@ created_val = ""
 delay_properties = 10
 
 userInsim = ""
+userInsimPassword = ""
 
 
 def connectToJiraInsim(jira, userInsim, userInsimPassword) :
