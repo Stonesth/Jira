@@ -54,6 +54,12 @@ def connectToJiraInsim(jira, userInsim, userInsimPassword) :
     tools.waitLoadingPageByXPATH2(delay_properties, '/html/body/div/form[1]/div/div/div[2]/div[1]/div/div/div/div/div[1]/div[3]/div/div/div/div[2]/div[2]/div/input[1]')
     projectInput = tools.driver.find_element(By.XPATH, '/html/body/div/form[1]/div/div/div[2]/div[1]/div/div/div/div/div[1]/div[3]/div/div/div/div[2]/div[2]/div/input[1]')
     projectInput.send_keys(userInsim)
+
+    # Click on the button "Next"
+    tools.waitLoadingPageByXPATH2(delay_properties, '//*[@id="idSIButton9"]')
+    projectInput = tools.driver.find_element(By.XPATH, '//*[@id="idSIButton9"]')
+    time.sleep(1)
+    projectInput.click()
     
     # Introduced the password
     tools.waitLoadingPageByXPATH2(delay_properties, '/html/body/div/form[1]/div/div/div[2]/div[1]/div/div/div/div/div/div[3]/div/div[2]/div/div[3]/div/div[2]/input')
