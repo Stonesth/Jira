@@ -46,8 +46,14 @@ delay_properties = 10
 userInsim = ""
 userInsimPassword = ""
 
-
 def connectToJiraInsim(jira, userInsim, userInsimPassword) :
+    
+    # Ouvrir une nouvelle URL dans un nouvel onglet
+    tools.driver.execute_script("window.open('');")
+    tools.driver.switch_to.window(tools.driver.window_handles[1])
+    tools.driver.get("https://jira.atlassian.insim.biz/" + jira)
+
+def connectToJiraInsim_2(jira, userInsim, userInsimPassword) :
     tools.driver.get("https://jira.atlassian.insim.biz/browse/" + jira)
     
     # Introduction of the user
