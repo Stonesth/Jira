@@ -310,15 +310,20 @@ def createJira(jiraTitle, description_text, incidentNumber, teamName, reporterNa
     time.sleep(1)
 
     # Description
-    # tools.waitLoadingPageByID("description")
-    tools.waitLoadingPageByID("tinymce")
+    # Need to click on the button Text (since the 2024-09-27)
+    tools.waitLoadingPageByXPATH2(delay_properties, '//*[@id="description-wiki-edit"]/nav/div/div/ul/li[2]/button')
+    projectInput = tools.driver.find_element(By.XPATH, '//*[@id="description-wiki-edit"]/nav/div/div/ul/li[2]/button')
+    projectInput.click()
+
+    # Place the description
+    tools.waitLoadingPageByID("description")
     # description = tools.driver.find_element(By.ID, "description") # since the 2023-09-15
     # description = tools.driver.find_element(By.ID, "mce_7_ifr") # since the 2023-09-15
     # description = tools.driver.find_element(By.ID, "description") # since the 2024-01-25
     # description = tools.driver.find_element(By.ID, "mce_7_ifr") # since the 2024-02-19
     # description = tools.driver.find_element(By.ID, "description") # since the 2024-03-18
     # description = tools.driver.find_element(By.ID, "mce_7_ifr") # since the 2024-03-21
-    description = tools.driver.find_element(By.XPATH, "/html/body/p") # since the 2024-03-21
+    description = tools.driver.find_element(By.ID, "description") # since the 2024-09-27
     
     description.click()
     # wait = WebDriverWait(tools.driver, 10)
