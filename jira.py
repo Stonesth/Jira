@@ -310,7 +310,8 @@ def createJira(jiraTitle, description_text, incidentNumber, teamName, reporterNa
     time.sleep(1)
 
     # Description
-    tools.waitLoadingPageByID("description")
+    # tools.waitLoadingPageByID("description")
+    tools.waitLoadingPageByID("tinymce")
     # description = tools.driver.find_element(By.ID, "description") # since the 2023-09-15
     # description = tools.driver.find_element(By.ID, "mce_7_ifr") # since the 2023-09-15
     # description = tools.driver.find_element(By.ID, "description") # since the 2024-01-25
