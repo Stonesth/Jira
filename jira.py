@@ -318,7 +318,7 @@ def createJira(jiraTitle, description_text, incidentNumber, teamName, reporterNa
     # description = tools.driver.find_element(By.ID, "mce_7_ifr") # since the 2024-02-19
     # description = tools.driver.find_element(By.ID, "description") # since the 2024-03-18
     # description = tools.driver.find_element(By.ID, "mce_7_ifr") # since the 2024-03-21
-    description = tools.driver.find_element(By.XPATH, "/html/body/section/div/div[1]/div/div/form/div/div[2]/div/div[1]/div[4]/div[1]/div[1]/div[9]/div[1]/div/div[1]/div[2]/div[1]/iframe/html/body/p") # since the 2024-03-21
+    description = tools.driver.find_element(By.XPATH, "/html/body/p") # since the 2024-03-21
     
     description.click()
     # wait = WebDriverWait(tools.driver, 10)
